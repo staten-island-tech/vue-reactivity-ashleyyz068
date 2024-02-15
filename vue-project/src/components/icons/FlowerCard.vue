@@ -13,10 +13,12 @@
 const props = defineProps({
     Flower: Object, 
 })
-const clicked =ref(0);
-function increment(){
-    clicked.value++;
-}
+
+// const clicked =ref(0);
+// function increment(){
+//     clicked.value++;
+// }
+
 </script>
 
 <style scoped>

@@ -12,7 +12,7 @@ import FlowerCard from "@/components/icons/FlowerCard.vue";
 
 const Flower = [
     {
-        name: 'Bloomsy Roses',
+        "name": 'Bloomsy Roses',
         price : '69.99',
         image: 'https://www.datocms-assets.com/32926/1684509106-2_bb1116-18_pandora-roses_lifestyle.jpg?w=900h%3D1200&auto=format&fit=max&q=75'
     },
