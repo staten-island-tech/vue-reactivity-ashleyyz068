@@ -1,14 +1,16 @@
 <template>
-<div>
+<div id="everything"> 
+<div id ="catalog">
     <FlowerCard v-for = "Flower in Flower" 
     :key="Flower.name"
     :Flower ="Flower"/>
 </div>
 
-<div>
+<div id = "cart">
     <CartCard v-for = "Flower in Flower" 
     :key="Flower.name"
     :Flower ="Flower"/>
+</div>
 </div>
 
 </template>
@@ -83,5 +85,16 @@ const Flower = [
 <style scoped>
 h1{
     color: aqua;
+}
+#catalog {
+    width: 70vw; 
+}
+
+#cart{
+    width: 29vw;
+    margin-left: 1vw;
+} 
+#everything{
+    display: flex;
 }
 </style>

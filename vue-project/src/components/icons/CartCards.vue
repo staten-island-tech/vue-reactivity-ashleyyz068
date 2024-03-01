@@ -1,6 +1,6 @@
 <template>
     <div id="cartContainer">
-        <div >
+        <div  >
       <h1>{{Flower.name }}</h1>
       <img :src="Flower.image" alt="">
       <h2>{{ clicked }}</h2>
