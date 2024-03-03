@@ -14,6 +14,7 @@
         v-for="(item, index) in cartItems"
         :key="index"
         :flower="item"
+        :quantity="item.quantity"
         @removeFromCart="removeFromCart(index)"
       />
     </div>
@@ -30,7 +31,16 @@ import { ref } from "vue";
 const cartItems = ref([]);
 
 function addToCart(flower) {
-  cartItems.value.push(flower);
+
+    const existingCartItem = cartItems.value.find(
+    (item) => item.flower.name === flower.name
+  );
+
+  if (existingCartItem) {
+    existingCartItem.quantity++;
+  } else {
+    cartItems.value.push({ flower, quantity: 1 });
+  }
 }
 
 function removeFromCart(index) {

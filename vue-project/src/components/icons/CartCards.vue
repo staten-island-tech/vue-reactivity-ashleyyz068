@@ -1,9 +1,10 @@
 <template>
 <div>
+    
     <h1>{{ flower.name }}</h1>
     <img :src="flower.image" alt="">
-    <h2>{{ clicked }}</h2>
     <button @click="$emit('removeFromCart')">Remove From Cart</button>
+    <h2 >{{ quantity }}</h2>
   </div>
     
 </template>
@@ -13,6 +14,7 @@ import { defineProps, ref } from "vue";
 
 const props = defineProps({
   flower: Object,
+  quantity: Number,
 });
 
 const clicked = ref(0);
