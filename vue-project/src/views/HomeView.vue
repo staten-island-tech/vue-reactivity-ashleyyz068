@@ -17,6 +17,9 @@
         :quantity="item.quantity"
         @removeFromCart="removeFromCart(index)"
       />
+      <div>
+        <p>Total Price: ${{ totalPrice.toFixed(2) }}</p>
+      </div>
     </div>
   </div>
 
@@ -26,7 +29,7 @@
 
 import FlowerCard from "@/components/icons/FlowerCard.vue";
 import CartCard from "@/components/icons/CartCards.vue";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 const cartItems = ref([]);
 
@@ -45,8 +48,18 @@ function addToCart(flower) {
 }
 
 function removeFromCart(index) {
-  cartItems.value.splice(index, 1);
+    if (cartItems.value[index].quantity >1){
+        cartItems.value[index].quantity--;
+    }else{
+        cartItems.value.splice(index, 1)
+    }
 }
+
+const totalPrice = computed(() => {
+  return cartItems.value.reduce((total, item) => {
+    return total + parseFloat(item.flower.price) * item.quantity;
+  }, 0);
+});
 
 const flowers = [
 {
