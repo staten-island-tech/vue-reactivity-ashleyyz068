@@ -2,7 +2,6 @@
    <div>
     <h1>{{ flower.name }}</h1>
     <img :src="flower.image" alt="">
-    <h2>{{ clicked }}</h2>
     <button @click="$emit('addToCart', props.flower);">Add to Cart</button>
   </div>
 

@@ -13,7 +13,7 @@
       <CartCard
         v-for="(item, index) in cartItems"
         :key="index"
-        :flower="item"
+        :flower="item.flower"
         :quantity="item.quantity"
         @removeFromCart="removeFromCart(index)"
       />
@@ -41,6 +41,7 @@ function addToCart(flower) {
   } else {
     cartItems.value.push({ flower, quantity: 1 });
   }
+  console.log(cartItems); 
 }
 
 function removeFromCart(index) {

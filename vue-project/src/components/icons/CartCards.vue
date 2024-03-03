@@ -1,7 +1,7 @@
 <template>
 <div>
     
-    <h1>{{ flower.name }}</h1>
+    <h1>{{ props.flower.name }}</h1>
     <img :src="flower.image" alt="">
     <button @click="$emit('removeFromCart')">Remove From Cart</button>
     <h2 >{{ quantity }}</h2>
@@ -17,7 +17,6 @@ const props = defineProps({
   quantity: Number,
 });
 
-const clicked = ref(0);
 
 // function remove() {
 //   clicked.value--;
