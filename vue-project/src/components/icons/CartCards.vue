@@ -1,20 +1,26 @@
 <template>
-    <div id="cartContainer">
-        <div  >
-      <h1>{{Flower.name }}</h1>
-      <img :src="Flower.image" alt="">
-      <h2>{{ clicked }}</h2>
-      <button @click="remove">Remove From Cart</button>
-    </div>
-    </div>
+<div>
+    <h1>{{ flower.name }}</h1>
+    <img :src="flower.image" alt="">
+    <h2>{{ clicked }}</h2>
+    <button @click="$emit('removeFromCart')">Remove From Cart</button>
+  </div>
     
 </template>
 
 <script setup>
-const props = defineProps({
-    Flower: Object, 
-})
+import { defineProps, ref } from "vue";
 
+const props = defineProps({
+  flower: Object,
+});
+
+const clicked = ref(0);
+
+// function remove() {
+//   clicked.value--;
+//   emit("removeFromCart");
+// }
 
 </script>
 
@@ -55,7 +61,6 @@ button{
 }
 #cartContainer{
     background-color: black; 
-         
 }
 h2{
     font-size: 5rem;

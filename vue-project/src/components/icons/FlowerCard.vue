@@ -1,23 +1,21 @@
 <template>
-    <div>
-      <h1>{{Flower.name }}</h1>
-      <img :src="Flower.image" alt="">
-      <h2>{{ clicked }}</h2>
-      <button @click="increment">Add to Cart</button>
-    </div>
+   <div>
+    <h1>{{ flower.name }}</h1>
+    <img :src="flower.image" alt="">
+    <h2>{{ clicked }}</h2>
+    <button @click="$emit('addToCart', props.flower);">Add to Cart</button>
+  </div>
+
   </template>
 
 <script setup>
-import {ref} from "vue";
+import { defineProps } from "vue";
 
 const props = defineProps({
-    Flower: Object, 
-})
+  flower: Object,
+});
 
-const clicked =ref(0);
-function increment(){
-  clicked.value = clicked.value +1; 
-}
+
 
 </script>
 

@@ -1,30 +1,44 @@
 <template>
-<div id="everything"> 
-<div id ="catalog">
-    <FlowerCard v-for = "Flower in Flower" 
-    :key="Flower.name"
-    :Flower ="Flower"/>
-</div>
+  <div id="everything">
+    <div id="catalog">
+      <FlowerCard
+        v-for="flower in flowers"
+        :key="flower.name"
+        :flower="flower"
+        @addToCart="addToCart(flower)"
+      />
+    </div>
 
-<div id = "cart">
-    <CartCard v-for = "Flower in Flower" 
-    :key="Flower.name"
-    :Flower ="Flower"/>
-</div>
-</div>
+    <div id="cart">
+      <CartCard
+        v-for="(item, index) in cartItems"
+        :key="index"
+        :flower="item"
+        @removeFromCart="removeFromCart(index)"
+      />
+    </div>
+  </div>
 
 </template>
 
 <script setup>
 
 import FlowerCard from "@/components/icons/FlowerCard.vue";
-
 import CartCard from "@/components/icons/CartCards.vue";
+import { ref } from "vue";
 
+const cartItems = ref([]);
 
+function addToCart(flower) {
+  cartItems.value.push(flower);
+}
 
-const Flower = [
-    {
+function removeFromCart(index) {
+  cartItems.value.splice(index, 1);
+}
+
+const flowers = [
+{
         name: 'Bloomsy Roses',
         price : '69.99',
         image: 'https://www.datocms-assets.com/32926/1684509106-2_bb1116-18_pandora-roses_lifestyle.jpg?w=900h%3D1200&auto=format&fit=max&q=75'
@@ -79,7 +93,8 @@ const Flower = [
         price : '64.99',
         image: 'https://www.datocms-assets.com/32926/1686575005-1_bb662-25_sweet-spring_hands.jpg?h=1000&w=800&crop=focalpoint&fit=crop&fp-x=0.4&auto=format&q=75'
     },
-]
+];
+
 </script>
 
 <style scoped>
