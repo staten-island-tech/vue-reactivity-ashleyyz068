@@ -1,11 +1,13 @@
 <template>
-   <div>
+  <div id="catalogCards">
     <h1>{{ flower.name }}</h1>
     <img :src="flower.image" alt="">
-    <button @click="$emit('addToCart', props.flower);">Add to Cart</button>
+    <div id="catalogCards-content">
+      <h2 id="catalogCards-content-price"> Cost for each: ${{ flower.price }}</h2>
+      <button @click="$emit('addItem', props.flower);">Add to Cart</button>
+    </div>
   </div>
-
-  </template>
+</template>
 
 <script setup>
 import { defineProps } from "vue";
@@ -19,20 +21,42 @@ const props = defineProps({
 </script>
 
 <style scoped>
-h1{
-    font-size: 5rem;
-}
-img{
-    width: 20rem;
-    height: 20rem
+#catalogCards {
+  align-items: center;
+  margin-top: 1rem;
+  background-color: #bff1ff;
+  height: 42rem;
+  width: 32rem;
+  text-align: center;
 
 }
-div{
-    margin-top: 1rem;
-    background-color: aqua;
+
+#catalogCards-content {
+  display: flex;
+  margin-top: 1rem;
 }
-button{
-  background-color: rgba(51, 51, 51, 0.05);
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+h2 {
+  font-size: 18px;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+
+}
+
+img {
+  width: 32rem;
+  height: 30rem
+}
+
+button {
+  background-color: white;
   border-radius: 8px;
   border-width: 0;
   color: #333333;
@@ -52,8 +76,4 @@ button{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-}
-h2{
-    font-size: 5rem;
-}
-</style>
+}</style>
